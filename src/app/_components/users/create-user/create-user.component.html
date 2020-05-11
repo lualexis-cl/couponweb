@@ -1,0 +1,34 @@
+<div class="modal-header">
+  <h4 class="modal-title">Crear nuevo usuario</h4>
+  <button type="button" class="close" aria-label="Close"
+   (click)="activeModal.dismiss('Cross click')">
+   <fa-icon [icon]="faWindowClose"></fa-icon>
+  </button>
+</div>
+<div class="myform form">
+  <form [formGroup]="form" (ngSubmit)="saveUser()" >
+    <div class="modal-body">
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" formControlName="email" id="email" name="email" class="form-control my-input" />
+        <div *ngIf="submittedForm && f.email.invalid" class="alert alert-danger">
+          <div *ngIf="f.email.errors.required">Este campo es requerido.</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="userType">Tipo Usuario</label>
+        <select name="userType" formControlName="userType" name="userType" id="userType" class="form-control my-input" >
+          <option value="0">- Seleccione un tipo usuario -</option>
+          <option [ngValue]="item.key" *ngFor="let item of this.userTypes" >{{ item.value }}</option>
+        </select>
+        <div *ngIf="submittedForm && f.userType.invalid" class="alert alert-danger">
+          <div *ngIf="f.userType.errors.required">Este campo es requerido.</div>
+          <div *ngIf="f.userType.errors.requiredSelected">Este campo es requerido.</div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="submit" class="btn btn-block send-button tx-tfm">Guardar</button>
+    </div>
+  </form>
+</div>

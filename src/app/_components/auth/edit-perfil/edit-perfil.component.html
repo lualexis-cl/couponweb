@@ -1,0 +1,39 @@
+<div class="modal-header">
+  <h4 class="modal-title">Editar Perfil</h4>
+  <button type="button" class="close" aria-label="Close"
+   (click)="activeModal.dismiss('Cross click')">
+   <fa-icon [icon]="faWindowClose"></fa-icon>
+  </button>
+</div>
+<div class="myform form" >
+  <form [formGroup]="form" (ngSubmit)="saveEditPerfil()">
+    <div class="modal-body">
+      <div class="form-group">
+        <label for="oldPassword">Actual Password</label>
+        <input type="password" formControlName="oldPassword" id="oldPassword" name="oldPassword" class="form-control my-input" />
+        <div *ngIf="submittedForm && f.oldPassword.invalid" class="alert alert-danger">
+          <div *ngIf="f.oldPassword.errors.required">Este campo es requerido.</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="newPassword">Nuevo Password</label>
+        <input type="password" formControlName="newPassword" id="newPassword" name="newPassword" class="form-control my-input" />
+        <div *ngIf="submittedForm && f.newPassword.invalid" class="alert alert-danger">
+          <div *ngIf="f.newPassword.errors.required">Este campo es requerido.</div>
+          <div *ngIf="f.newPassword.errors.minlength">El largo mínimo del password es 6.</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="rePassword">Repita Nuevo Password</label>
+        <input type="password" formControlName="rePassword" id="rePassword" name="rePassword" class="form-control my-input" />
+        <div *ngIf="submittedForm && f.rePassword.invalid" class="alert alert-danger">
+          <div *ngIf="f.rePassword.errors.required">Este campo es requerido.</div>
+          <div *ngIf="f.rePassword.errors.matchPassword">Passwords no coinciden.</div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="submit" class="btn btn-block send-button tx-tfm">Guardar</button>
+    </div>
+  </form>
+</div>

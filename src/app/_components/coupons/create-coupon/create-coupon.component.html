@@ -1,0 +1,151 @@
+<div class="">
+  <div class="col-md-7 mx-auto text-center">
+
+  </div>
+  <div class="row">
+
+
+	 <div class="col-md-7 mx-auto">
+
+    <div class="border-form">
+      <div class="header-title text-center">
+        <h1 class="wv-heading--title">
+           Crear nuevo cupón
+        </h1>
+        <h2 class="wv-heading--subtitle">
+
+        </h2>
+       </div>
+      <div class="myform form ">
+        <form [formGroup]="form" #formCreateCoupon="ngForm" (ngSubmit)="saveCoupon()" >
+          <div class="form-group">
+            <label for="nameCoupon">Nombre Cupon</label>
+            <input type="text" formControlName="nameCoupon" id="nameCoupon" class="form-control my-input" name="nameCoupon" />
+            <div *ngIf="submittedForm && f.nameCoupon.invalid" class="alert alert-danger">
+              <div *ngIf="f.nameCoupon.errors.required">Este campo es requerido.</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="expiration">Fecha Expiración</label>
+            <input type="date" formControlName="expiration" id="expiration" placeholder="Expiración del Cupón" class="form-control my-input" name="expiration" />
+            <div *ngIf="submittedForm && f.expiration.invalid" class="alert alert-danger">
+              <div *ngIf="f.expiration.errors.required">Este campo es requerido.</div>
+              <div *ngIf="f.expiration.errors.date">Fecha incorrecta.</div>
+              <div *ngIf="f.expiration.errors.dateMin">Fecha no puede ser menor a hoy.</div>
+              <div *ngIf="f.expiration.errors.dateMax">Fecha demasiado mayor.</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="totalCoupon">Cantidad de Cupones</label>
+            <input type="number" formControlName="totalCoupon" id="totalCoupon" class="form-control my-input" name="totalCoupon" />
+            <div *ngIf="submittedForm && f.totalCoupon.invalid" class="alert alert-danger">
+              <div *ngIf="f.totalCoupon.errors.required">Este campo es requerido.</div>
+              <div *ngIf="f.totalCoupon.errors.min">El valor minimo para este campo debe ser 1.</div>
+              <div *ngIf="f.totalCoupon.errors.max">El valor ingresado es demasiado grande.</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="imageCoupon">Imagen del Cupón (png, jpg, gif) </label>
+            <input type="file" (change)="onImageChange($event)" accept="image/x-png,image/gif,image/jpeg" formControlName="imageCoupon" id="imageCoupon" class="form-control my-input" name="imageCoupon" />
+            <div *ngIf="submittedForm && f.imageCoupon.invalid" class="alert alert-danger">
+              <div *ngIf="f.imageCoupon.errors.required">Este campo es requerido.</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="text">Condiciones del Cupón</label>
+            <textarea formControlName="text" class="form-control my-input" name="text" id="text" cols="5"></textarea>
+            <div *ngIf="submittedForm && f.text.invalid" class="alert alert-danger">
+              <div *ngIf="f.text.errors.required">Este campo es requerido.</div>
+            </div>
+          </div>
+          <div class="text-center ">
+          <!--<button type="submit" class=" btn btn-block send-button tx-tfm">Create Your Free Account</button>-->
+          <button type="submit" class="btn btn-block send-button tx-tfm">
+            Guardar Cupón
+            <fa-icon [icon]="faSave"></fa-icon>
+          </button>
+          </div>
+          <div class="col-md-12 ">
+          <div class="login-or">
+            <hr class="hr-or">
+            <span class="span-or"></span>
+          </div>
+          </div>
+          <div class="form-group">
+            <button type="button" (click)="back()"  class="btn btn-block warning-button tx-tfm">
+              <fa-icon [icon]="faBackward"></fa-icon>
+              Volver
+            </button>
+          </div>
+          <p class="small mt-3">Todos los campos son obligatorios.
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
+
+<!--
+
+
+<form [formGroup]="form" #formCreateCoupon="ngForm" (ngSubmit)="saveCoupon()" >
+  <div class="form-group">
+    <label for="nameCoupon">Nombre Cupon</label>
+    <input type="text" formControlName="nameCoupon" id="nameCoupon" class="form-control" name="nameCoupon" />
+    <div *ngIf="formCreateCoupon.submitted && f.nameCoupon.invalid" class="alert alert-danger">
+      <div *ngIf="f.nameCoupon.errors.required">Este campo es requerido.</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="expiration">Fecha Expiración</label>
+    <input type="date" formControlName="expiration" id="expiration" class="form-control" name="expiration" />
+    <div *ngIf="formCreateCoupon.submitted && f.expiration.invalid" class="alert alert-danger">
+      <div *ngIf="f.expiration.errors.required">Este campo es requerido.</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="totalCoupon">Cantidad de Cupones</label>
+    <input type="number" formControlName="totalCoupon" id="totalCoupon" class="form-control" name="totalCoupon" />
+    <div *ngIf="formCreateCoupon.submitted && f.totalCoupon.invalid" class="alert alert-danger">
+      <div *ngIf="f.totalCoupon.errors.required">Este campo es requerido.</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="imageCoupon">Imagen del Cupón</label>
+    <input type="file" (change)="onImageChange($event)" formControlName="imageCoupon" id="imageCoupon" class="form-control" name="imageCoupon" />
+    <div *ngIf="formCreateCoupon.submitted && f.imageCoupon.invalid" class="alert alert-danger">
+      <div *ngIf="f.imageCoupon.errors.required">Este campo es requerido.</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="text">Condiciones del Cupón</label>
+    <textarea formControlName="text" class="form-control" name="text" id="text" cols="5"></textarea>
+    <div *ngIf="formCreateCoupon.submitted && f.text.invalid" class="alert alert-danger">
+      <div *ngIf="f.text.errors.required">Este campo es requerido.</div>
+    </div>
+  </div>
+
+  <br />
+  <button type="button" (click)="back()"  class="btn btn-secondary">Volver</button> &nbsp;
+  <button type="submit" class="btn btn-primary">Guardar Cupón</button>
+</form>
+
+<div class="col-md-12 ">
+    <div class="login-or">
+    <hr class="hr-or">
+    <span class="span-or">or</span>
+    </div>
+  </div>
+  <div class="form-group">
+    <a class="btn btn-block g-button" href="#">
+    <i class="fa fa-google"></i> Sign up with Google
+    </a>
+  </div>
+  <p class="small mt-3">By signing up, you are indicating that you have read and agree to the <a href="#" class="ps-hero__content__link">Terms of Use</a> and <a href="#">Privacy Policy</a>.
+  </p>
+-->

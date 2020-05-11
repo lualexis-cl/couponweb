@@ -1,0 +1,43 @@
+<div class="border-form">
+  <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
+    <div class="btn-group" role="group" aria-label="First group">
+    </div>
+    <div class="input-group">
+      <button type="button" class="btn btn-block send-button tx-tfm" (click)="openCreateUser()" >
+        Crear Nuevo Usuario
+        <fa-icon [icon]="faUser"></fa-icon>
+      </button>
+    </div>
+  </div>
+  <table class="table table-striped">
+    <thead>
+      <th scope="col">Email</th>
+      <th scope="col">Tipo Usuario</th>
+      <th scope="col"> </th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of this.users | paginate: { id: 'listing_pagination', itemsPerPage: 15, currentPage: page, totalItems: collectionSize }" >
+        <td>
+          {{ item.email }}
+        </td>
+        <td>
+          <div *ngIf="item.userType === 1" >
+            Mesero
+          </div>
+          <div *ngIf="item.userType === 2" >
+            Administrador
+          </div>
+        </td>
+        <td>
+          <button type="button" class="btn btn-xs warning-button tx-tfm" (click)="delete(item.key, item.email)" >
+            Eliminar
+            <fa-icon [icon]="faTrash"></fa-icon>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div>
+    <pagination-controls  id="listing_pagination" maxSize="5" directionLinks="true" (pageChange)="page = $event"></pagination-controls>
+  </div>
+</div>

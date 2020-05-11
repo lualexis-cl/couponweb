@@ -1,0 +1,22 @@
+<nav nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" [routerLink]="['/couponList']">
+    <svg-icon src="./../../../assets/commerce.svg"  [svgStyle]="{ 'width.px':30 }"></svg-icon>
+  </a>
+    <ul class="navbar-nav mr-auto" *ngIf="isLoggedIn()" >
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['/couponList']">Cupones</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['/userList']">Usuarios</a>
+      </li>
+    </ul>
+    <div ngbDropdown class="d-inline-block" *ngIf="isLoggedIn()" >
+      <button class="btn btn-menu" id="dropdownBasic1" ngbDropdownToggle>
+        Administración Perfil
+      </button>
+      <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+        <button class="dropdown-item" (click)="openEditPassword()" >Cambiar Contraseña</button>
+        <button class="dropdown-item" (click)="logout()" >Cerrar sesión</button>
+      </div>
+    </div>
+</nav>

@@ -1,0 +1,94 @@
+<div class="col-md-6 mx-auto text-center">
+
+ </div>
+ <div class="row">
+  <div class="col-md-4 mx-auto">
+    <div class="border-form">
+      <div class="form-group">
+        <img style="border-radius: 30px;" width="100%" height="100%" src="{{ couponInfo?.urlImage }}" />
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6 mx-auto">
+    <div class="border-form">
+      <div class="header-title text-center">
+        <h1 class="wv-heading--title">
+           Editar cupón
+        </h1>
+        <h2 class="wv-heading--subtitle">
+
+        </h2>
+       </div>
+   <div class="myform form ">
+      <form [formGroup]="form" #formCreateCoupon="ngForm" (ngSubmit)="editCoupon()" >
+
+       <div class="form-group">
+         <label for="nameCoupon">Nombre Cupon</label>
+         <input type="text" formControlName="nameCoupon" id="nameCoupon" class="form-control my-input" name="nameCoupon" />
+         <div *ngIf="submittedForm && f.nameCoupon.invalid" class="alert alert-danger">
+           <div *ngIf="f.nameCoupon.errors.required">Este campo es requerido.</div>
+         </div>
+       </div>
+       <div class="form-group">
+        <label for="expiration">Fecha Expiración</label>
+        <input type="date" formControlName="expiration" id="expiration" placeholder="Expiración del Cupón" class="form-control my-input" name="expiration" />
+        <div *ngIf="submittedForm && f.expiration.invalid" class="alert alert-danger">
+          <div *ngIf="f.expiration.errors.required">Este campo es requerido.</div>
+          <div *ngIf="f.expiration.errors.date">Fecha incorrecta.</div>
+          <div *ngIf="f.expiration.errors.dateMin">Fecha no puede ser menor a hoy.</div>
+          <div *ngIf="f.expiration.errors.dateMax">Fecha demasiado mayor.</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="totalCoupon">Cantidad de Cupones</label>
+        <input type="number" formControlName="totalCoupon" id="totalCoupon" class="form-control my-input" name="totalCoupon" />
+        <div *ngIf="submittedForm && f.totalCoupon.invalid" class="alert alert-danger">
+          <div *ngIf="f.totalCoupon.errors.required">Este campo es requerido.</div>
+          <div *ngIf="f.totalCoupon.errors.min">El valor minimo para este campo debe ser 1.</div>
+          <div *ngIf="f.totalCoupon.errors.max">El valor ingresado es demasiado grande.</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="imageCoupon">Imagen del Cupón (png, jpg, gif) </label>
+        <input type="file" (change)="onImageChange($event)" accept="image/x-png,image/gif,image/jpeg" formControlName="imageCoupon" id="imageCoupon" class="form-control my-input" name="imageCoupon" />
+        <div *ngIf="submittedForm && f.imageCoupon.invalid" class="alert alert-danger">
+          <div *ngIf="f.imageCoupon.errors.required">Este campo es requerido.</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="text">Condiciones del Cupón</label>
+        <textarea formControlName="text" class="form-control my-input" name="text" id="text" cols="5"></textarea>
+        <div *ngIf="submittedForm && f.text.invalid" class="alert alert-danger">
+          <div *ngIf="f.text.errors.required">Este campo es requerido.</div>
+        </div>
+      </div>
+       <div class="text-center ">
+        <!--<button type="submit" class=" btn btn-block send-button tx-tfm">Create Your Free Account</button>-->
+
+        <button type="submit" class="btn btn-block send-button tx-tfm">
+          Guardar Cambios
+
+          <fa-icon [icon]="faSave"></fa-icon>
+        </button>
+       </div>
+       <div class="col-md-12 ">
+        <div class="login-or">
+         <hr class="hr-or">
+         <span class="span-or"></span>
+        </div>
+       </div>
+       <div class="form-group">
+         <button type="button" (click)="back()"  class="btn btn-block warning-button tx-tfm">
+           <fa-icon [icon]="faBackward"></fa-icon>
+           Volver
+          </button>
+       </div>
+       <p class="small mt-3">Todos los campos son obligatorios.
+       </p>
+      </form>
+   </div>
+
+  </div>
+
+  </div>
+ </div>
