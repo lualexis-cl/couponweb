@@ -45,8 +45,13 @@ export class CreateUserComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
-    this.subscriptionValidator.unsubscribe();
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
+
+    if (this.subscriptionValidator) {
+      this.subscriptionValidator.unsubscribe();
+    }
   }
 
   get f(){
