@@ -28,6 +28,7 @@
     "@sweetalert2/ngx-sweetalert2": "^8.1.0",
     "angular-svg-icon": "^9.2.0",
     "bootstrap": "^4.4.1",
+    "dotenv": "^8.2.0",
     "firebase": "^7.14.1",
     "jw-angular-pagination": "^1.1.0",
     "moment": "^2.24.0",
