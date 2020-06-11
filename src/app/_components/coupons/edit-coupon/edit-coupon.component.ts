@@ -119,7 +119,21 @@ export class EditCouponComponent implements OnInit, OnDestroy {
   saveCoupon(urlImage: string) {
     const coupon = this.form.value as Coupon;
     coupon.urlImage = urlImage;
-    coupon.couponAvailable = this.couponInfo.couponAvailable;
+    coupon.couponAvailable = coupon.totalCoupon;
+
+    if (this.couponInfo.totalCoupon !== coupon.totalCoupon) {
+      let couponUsings = 0;
+
+      if (this.couponInfo.couponAvailable !== this.couponInfo.totalCoupon) {
+        couponUsings = this.couponInfo.totalCoupon - this.couponInfo.couponAvailable;
+      }
+
+      coupon.couponAvailable = coupon.couponAvailable - couponUsings;
+
+      if (coupon.couponAvailable < 0) {
+        coupon.couponAvailable = 0;
+      }
+    }
 
     this.couponService.update(this.couponInfo.key, coupon)
       .then(result => {
