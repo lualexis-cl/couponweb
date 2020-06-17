@@ -61,26 +61,6 @@ export class AuthService {
     this.removeUser();
   }
 
-  createUserLogin() {
-    this.auth.createUserWithEmailAndPassword('luis.alexis.arredondo.andrade@gmail.com', '123456')
-      .then(response => {
-        this.createUser(response.user.uid);
-      });
-  }
-
-  createUser(uid: string) {
-    const userProfile: UserProfile  = {
-      uid,
-      name: 'Prueba',
-      lastName: 'Lala',
-      cellPhone: '12345667',
-      email: 'luis.alexis.arredondo.andrade@gmail.com',
-      typeClient: 2
-    };
-    this.db.list(`${this.dbPath}/${userProfile.email}`)
-      .push(userProfile);
-  }
-
   getClientList(): Observable<UserProfile[]> {
     return this.itemRef.snapshotChanges()
     .pipe(map(result => {

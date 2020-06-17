@@ -6,6 +6,7 @@ import { LoginComponent } from './_components/auth/login/login.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from './_guards/auth.guard';
+import { ClientCouponListComponent } from './_components/coupons/client-coupon-list/client-coupon-list.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -18,6 +19,7 @@ const routes: Routes = [
       { path: 'createCoupon' , component: CreateCouponComponent },
       { path: 'editCoupon/:id' , component: EditCouponComponent },
       { path: 'userList' , component: UserListComponent },
+      { path: 'clientCouponList/:id', component: ClientCouponListComponent },
       { path: '', component: CouponListComponent }
     ]
   },

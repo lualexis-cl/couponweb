@@ -3,6 +3,4 @@ export interface UserProfile {
   name: string;
   lastName: string;
   email: string;
-  cellPhone: string;
-  typeClient: number;
 }

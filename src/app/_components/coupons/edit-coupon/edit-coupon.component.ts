@@ -119,7 +119,7 @@ export class EditCouponComponent implements OnInit, OnDestroy {
   saveCoupon(urlImage: string) {
     const coupon = this.form.value as Coupon;
     coupon.urlImage = urlImage;
-    coupon.couponAvailable = coupon.totalCoupon;
+    coupon.couponAvailable = this.couponInfo.couponAvailable;
 
     if (this.couponInfo.totalCoupon !== coupon.totalCoupon) {
       let couponUsings = 0;
@@ -128,7 +128,7 @@ export class EditCouponComponent implements OnInit, OnDestroy {
         couponUsings = this.couponInfo.totalCoupon - this.couponInfo.couponAvailable;
       }
 
-      coupon.couponAvailable = coupon.couponAvailable - couponUsings;
+      coupon.couponAvailable = coupon.totalCoupon - couponUsings;
 
       if (coupon.couponAvailable < 0) {
         coupon.couponAvailable = 0;

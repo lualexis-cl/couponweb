@@ -32,6 +32,7 @@ import { EditCouponComponent } from './_components/coupons/edit-coupon/edit-coup
 import { UserListComponent } from './_components/users/user-list/user-list.component';
 import { CreateUserComponent } from './_components/users/create-user/create-user.component';
 import { EditPerfilComponent } from './_components/auth/edit-perfil/edit-perfil.component';
+import { ClientCouponListComponent } from './_components/coupons/client-coupon-list/client-coupon-list.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { EditPerfilComponent } from './_components/auth/edit-perfil/edit-perfil.
     EditCouponComponent,
     UserListComponent,
     CreateUserComponent,
-    EditPerfilComponent
+    EditPerfilComponent,
+    ClientCouponListComponent
   ],
   imports: [
     BrowserModule,

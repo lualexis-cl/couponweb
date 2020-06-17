@@ -17,8 +17,8 @@
   <thead>
     <th scope="col">Nombre Cupón</th>
     <th scope="col">Expiración</th>
-    <th scope="col">Cupones Totales</th>
-    <th scope="col">Cupones Restantes</th>
+    <th scope="col">Total</th>
+    <th scope="col">Restantes</th>
     <th scope="col"> </th>
   </thead>
   <tbody>
@@ -39,10 +39,14 @@
         <button type="button" class="btn btn-xs confirm-button tx-tfm" (click)="goToEditCoupon(item.key)" >
           Editar
           <fa-icon [icon]="faEdit"></fa-icon>
-        </button> &nbsp;
+        </button>
         <button type="button" class="btn btn-xs warning-button tx-tfm" (click)="deleteCoupon(item.key, item.urlImage)" >
           Eliminar
           <fa-icon [icon]="faTrash"></fa-icon>
+        </button>
+        <button type="button" class="btn btn-xs confirm-button tx-tfm" (click)="goToClientCoupon(item.key)" >
+          Clientes
+          <fa-icon [icon]="faUserCircle"></fa-icon>
         </button>
       </td>
     </tr>

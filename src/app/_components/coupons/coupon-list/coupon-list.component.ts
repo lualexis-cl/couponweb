@@ -6,7 +6,7 @@ import { CouponService } from './../../../_services/coupons/coupon.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
-import { faTrash, faEdit, faPlusCircle } from '@fortawesome/free-solid-svg-icons';
+import { faTrash, faEdit, faPlusCircle, faUserCircle } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-coupon-list',
@@ -22,6 +22,7 @@ export class CouponListComponent implements OnInit, OnDestroy {
   faTrash = faTrash;
   faEdit = faEdit;
   faPlusCircle = faPlusCircle;
+  faUserCircle = faUserCircle;
 
   constructor(private couponService: CouponService,
               private route: Router,
@@ -85,5 +86,9 @@ export class CouponListComponent implements OnInit, OnDestroy {
 
   goToEditCoupon(key: string) {
     this.route.navigate([`/editCoupon/${key}`]);
+  }
+
+  goToClientCoupon(key: string) {
+    this.route.navigate([`/clientCouponList/${key}`]);
   }
 }
